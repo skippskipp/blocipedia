@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blocipedia</title>
+  <meta name ="viewport" content="width=device-width, initial-scale=1">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
 <div class="container">
   <% flash.each do |key, value| %>
     <div class="alert alert-<%= key %>">
@@ -6,12 +17,6 @@
   <% end %>
 </div>
 
-<%= yield :top_content %>
-
-<div class="container">
-    <h1><%= yield :header %></h1>
-    <h1> Welcome to Blocipedia! </h1>
-</div>
   <% if user_signed_in? %>
     Signed in as: <strong><%= current_user.email %></strong> |
     <%= link_to 'Edit Profile', edit_user_registration_path,
@@ -23,3 +28,5 @@
     <%= link_to "Sign In", new_user_session_path, :class => 'navbar-link' %>
   <% end %>
 <%= yield %>
+</body>
+</html>
