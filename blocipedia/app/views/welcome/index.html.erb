@@ -1,16 +1,27 @@
-
-  <div class="jumbotron">
-    <div class="container">
-      <h1>Welcome to Blocipedia!</h1>
-      <% if user_signed_in? %>
-        <div>
-          <p> Share something with the world today.</p>
+<div class="jumbotron">
+  <div class="container">
+    <h1>Welcome to Blocipedia!</h1>
+    <% if user_signed_in? %>
+      <div>
+        <p> Hello, <%= current_user.username %>! Share something with the world today.</p>
+      </div>
+        <div class="col-md-4">
+          <%= link_to "Start New Wiki", new_wiki_path(@wiki), class: 'btn btn-success' %>
+          <%= link_to "Browse Extant Wikis", wikis_path(@wiki), class: 'btn btn-info' %>
         </div>
       <% else %>
         <p>Register to get started.</p>
         <p>
           <%= link_to 'Register', new_user_registration_path, class: 'btn btn-primary btn-lg' %>
         </p>
-      <% end %>  
+    <% end %>
     </div>
+  <div>
+    <p></p>
   </div>
+  <div class="panel panel-info">
+    <div class="panel-heading">Wiki of the Day</div>
+    <div class="panel-body">Placeholder</div>
+    <div class="panel-footer">Created by: <%= current_user.username %> </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="jumbotron">
+  <div class="container">
+    <h3>A new wiki from <%= current_user.username %>?! YES!!</h3>
+
+    <div class="row">
+      <div class="col-md-4">
+        <p>Guidelines for a better world:</p>
+        <ul>
+          <li>Keep it nice.</li>
+          <li>This site believes in science and facts.</li>
+          <li>Insults to Canada will result in termination. Sorry, eh?</li>
+        </ul>
+      </div>
+      <div class="col-md-8">
+        <%= render partial: 'form', locals: { wiki: @wiki } %>
+      </div>
+    </div>
+  </div>
+</div>
