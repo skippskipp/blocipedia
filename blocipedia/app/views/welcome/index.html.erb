@@ -22,6 +22,8 @@
   <div class="panel panel-info">
     <div class="panel-heading">Wiki of the Day</div>
     <div class="panel-body">Placeholder</div>
-    <div class="panel-footer">Created by: <%= current_user.username %> </div>
+    <% if user_signed_in? %>
+      <div class="panel-footer">Created by: <%= current_user.username %> </div>
+    <% end %>  
   </div>
 </div>
