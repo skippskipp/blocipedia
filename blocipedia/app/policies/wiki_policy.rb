@@ -10,4 +10,8 @@ class WikiPolicy < ApplicationPolicy
 
     #user.admin? or not post.published?
   end
+
+  def show?
+    true
+  end
 end
