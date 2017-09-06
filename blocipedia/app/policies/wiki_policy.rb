@@ -14,4 +14,15 @@ class WikiPolicy < ApplicationPolicy
   def show?
     true
   end
+
+  def new?
+
+  end
+
+  def create?
+
+  end
+
+  #create and same policy for new, determining whether user can create a private wiki
+  #pundit policies allow you to define a scope within a policy
 end

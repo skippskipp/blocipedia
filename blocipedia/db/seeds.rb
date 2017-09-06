@@ -14,7 +14,7 @@ users = User.all
 10.times do
   Wiki.create!(
   title: Faker::ChuckNorris.fact,
-  body: Faker::Lorem.sentence(3),
+  body: Faker::Lorem.sentence(15),
   user: users.sample
   )
 end
