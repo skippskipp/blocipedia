@@ -3,7 +3,7 @@
     <h1>Welcome to Blocipedia!</h1>
     <% if user_signed_in? %>
       <div>
-        <p> Hello, <%= current_user.username %>! Share something with the world today.</p>
+        <p> Hello, <%= current_user.username %> id: <% current_user.id %>! Share something with the world today.</p>
       </div>
         <div class="col-md-4">
           <%= link_to "Start New Wiki", new_wiki_path(@wiki), class: 'btn btn-success' %>
@@ -24,6 +24,6 @@
     <div class="panel-body">Placeholder</div>
     <% if user_signed_in? %>
       <div class="panel-footer">Created by: <%= current_user.username %> </div>
-    <% end %>  
+    <% end %>
   </div>
 </div>

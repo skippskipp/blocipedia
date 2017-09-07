@@ -26,7 +26,10 @@
       <% if user_signed_in? && current_user.standard? %>
         <%= link_to "Upgrade to Premium!", new_charge_path, :class => 'btn btn-success navbar-right' %>
       <% elsif user_signed_in? && current_user.premium? %>
-        <%= button_to "Cancel Membership", users_cancel_membership_path, method: :put, data: { confirm: "Times are tough, but are you SURE you want to cancel?" }, :class => 'btn btn-danger navbar-right' %>
+        <%= button_to "Cancel Membership", users_cancel_membership_path, method: :put,
+          data: { confirm: "Times are tough, but are you SURE you want to cancel? Remember:
+          canceling membership will make any of your private wikis public." },
+          :class => 'btn btn-danger navbar-right' %>
       <% end %>
 
       </ul>
