@@ -1,28 +1,40 @@
 class WikiPolicy < ApplicationPolicy
-  attr_reader :user, :wiki
+  class Scope
+    attr_reader :user, :wiki
 
-  def initialize(user, wiki)
-    @current_user = user
-    @wiki = wiki
+    def initialize(user, wiki)
+      @current_user = user
+      @wiki = wiki
+    end
+
+    def resolve
+      if @current_user.admin? || @current_user.premium?
+        wiki.all
+      else
+        wiki.where(private: false)
+      end
+    end
   end
 
   def update?
-
-    #user.admin? or not post.published?
+    user.present?
   end
 
-  def show?
-    true
+  def edit?
+    user.present?
   end
 
-  def new?
+    def show?
+      true
+    end
 
-  end
+    def new?
 
-  def create?
+    end
 
-  end
+    def create?
 
+    end
   #create and same policy for new, determining whether user can create a private wiki
   #pundit policies allow you to define a scope within a policy
 end
