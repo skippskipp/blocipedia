@@ -12,4 +12,6 @@ class UsersController < ApplicationController
     redirect_to wikis_path, notice: 'You have been downgraded back down with the masses. Any of your private wikis are now public.'
     end
   end
+
+
 end

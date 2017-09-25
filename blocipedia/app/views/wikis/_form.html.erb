@@ -17,14 +17,22 @@
       <%= f.label :body %>
       <%= f.text_area :body, rows: 12, class: 'form-control', placeholder: "What's this wiki about?" %>
     <% end %>
-  <div class="form-group">
-    <%= f.submit "Save", class: 'btn btn-success' %>
-  </div>
-  <% if current_user.admin? || current_user.premium? %>
+  <% if current_user.id == @wiki.user_id || current_user.admin? %>
     <div class="form-group">
       <%= f.label :private, class: 'checkbox' do %>
         <%= f.check_box :private %> Private wiki
       <% end %>
     </div>
   <% end %>
+  <% if current_user.id == @wiki.user_id || current_user.admin? %>
+    <div class="form-group">
+      <p>Add Collaoborators?</p>
+        <%= collection_check_boxes(:wiki, :user_ids, @possible_collaborators, :id, :username) do |bx| %>
+            <%= bx.check_box %>
+            <%= bx.label %><br />
+        <% end %>
+  <% end %>
+<div class="form-group">
+  <%= f.submit "Save", class: 'btn btn-success' %>
+</div>
 <% end %>

@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base
   enum role: [:admin, :standard, :premium]
   after_initialize :set_default_role
-  has_many :collaborators, dependent: :destroy
-  has_many :wikis, dependent: :destroy
-  
+  has_many :wikis
+  has_many :collaborators, through: :wikis
+
 
   validates :username,
             :presence => true,
@@ -20,7 +20,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable
 
-  def collaborator_for(wiki)
-    collaborators.where(wiki_id: wiki.id).first
+  def collaborates_on
+    collaborations.wikis
   end
+
 end
